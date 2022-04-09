@@ -55,6 +55,41 @@ SELECT * FROM post;
 -- Parte 2
 -- 1. Crear una nueva tabla llamada “comentarios”, con los atributos id, fecha, hora de
 -- creación y contenido, que se relacione con la tabla posts. (1 Punto)
+CREATE TABLE comentarios(
+    id SERIAL,
+    post_id INT,
+    createdAt TIMESTAMP,
+    content VARCHAR,
+    FOREIGN KEY (post_id) REFERENCES post (id)
+);
+\dt
 -- 2. Crear 2 comentarios para el post de "Pamela" y 4 para "Carlos". (0.4 Puntos)
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(1, '2021-05-10 15:16:13', 'El mio era el velociraptor');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(1, '2021-05-11 10:00:24', 'A nadie le gusta el velociraptor dah');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2021-05-11 09:00:00', 'te bancamos carlitos');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2021-05-12 10:00:00', 'Hierba mala nunca muere');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2021-05-13 11:00:00', 'Carlitos deberías saber cuando parar...');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(6, '2021-05-14 12:00:00', 'Un grande carlitos');
+SELECT * FROM comentarios;
 -- 3. Crear un nuevo post para "Margarita". (1 Punto)
+INSERT INTO post (userName, createdAt, content, descripcion, title)
+VALUES('Margarita', '2021-06-11', 'Yo vengo de san rosendo', 'pero no me llamo carmela', 'El drama de margarita');
+SELECT * FROM post;
 -- 4. Ingresar 5 comentarios para el post de Margarita. (1 Punto)
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-11 10:00:00', 'Lo sentimos por ti margarita');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-11 11:00:00', 'Aguantate uwu *///*');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-11 12:00:00', 'Che amigos pasense por mi canal de youtube...');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-11 13:00:00', 'Hola soy magdalena y mori en esta sala, manda este comentario a 3 personas....');
+INSERT INTO comentarios(post_id, createdAt, content)
+VALUES(7, '2021-05-11 14:00:00', 'Uff margarita lo siento tanto, re terrible ahre');
+SELECT * FROM comentarios;
